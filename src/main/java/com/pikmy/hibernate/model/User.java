@@ -1,90 +1,105 @@
 package com.pikmy.hibernate.model;
 
-import java.util.Date;
+
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="user")
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_USER", nullable=false, unique=true)
-	private Integer id_user;
+	@NotNull
+	@Column(name="ID", nullable=false)
+	private String id;
 	
-	@Column(name="ID_AVATAR", nullable=false)
-	private Integer id_avatar;
+	@NotNull
+	@Column(name="FIRST_NAME", nullable=false)
+	private String first_name;
 	
-	@Column(name="NAME", nullable=false)
-	private String name;
+	@NotNull
+	@Column(name="LAST_NAME", nullable=false)
+	private String last_name;
 	
-	@Column(name="PASSWORD", nullable=false)
-	private String password;
+	@NotNull
+	@Column(name="EMAIL", nullable=false)
+	private String email;
 	
-	@Temporal(TemporalType.DATE)
-	@Column(name="DATE", nullable=false)
-	private Date date;
+	@NotNull
+	@Column(name="GENDER", nullable=false)
+	private String gender;
+	
+	@NotNull
+	@Column(name="BIRTHDAY", nullable=false)
+	private String birthday;
+	
+	@ManyToMany
+	private List<Channel> list_channel;
 	
 	public User() {
 		
 	}
 
-	public User(Integer id_user, Integer id_avatar, String name, String password, Date date) {
-		super();
-		this.id_user = id_user;
-		this.id_avatar = id_avatar;
-		this.name = name;
-		this.password = password;
-		this.date = date;
+	public String getId() {
+		return id;
 	}
 
-	public Integer getId_user() {
-		return id_user;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public void setId_user(Integer id_user) {
-		this.id_user = id_user;
+	public String getFirst_name() {
+		return first_name;
 	}
 
-	public Integer getId_avatar() {
-		return id_avatar;
+	public void setFirst_name(String first_name) {
+		this.first_name = first_name;
 	}
 
-	public void setId_avatar(Integer id_avatar) {
-		this.id_avatar = id_avatar;
+	public String getLast_name() {
+		return last_name;
 	}
 
-	public String getName() {
-		return name;
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getEmail() {
+		return email;
 	}
 
-	public String getPassword() {
-		return password;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public String getGender() {
+		return gender;
 	}
 
-	public Date getDate() {
-		return date;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public String getBirthday() {
+		return birthday;
 	}
 
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public List<Channel> getList_channel() {
+		return list_channel;
+	}
+
+	public void setList_channel(List<Channel> list_channel) {
+		this.list_channel = list_channel;
+	}
 	
 }

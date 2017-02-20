@@ -1,16 +1,19 @@
 package com.pikmy.hibernate.model;
 
-import java.util.Date;
+
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="channel")
@@ -18,37 +21,30 @@ public class Channel {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_CHANNEL", nullable=false, unique=true)
-	private Integer id_channel;
+	@Column(name="ID", nullable=false)
+	private Integer id;
 
+	@NotNull
 	@Column(name="NAME_CHANNEL", nullable=false)
 	private String name_channel;
 	
+	@NotNull
 	@Column(name="CHANNEL_DATE", nullable=false)
-	private Date channel_date;
+	private String channel_date;
 	
-	@ElementCollection
-	@OneToMany()
+	@ManyToMany
 	private List<User> list_users;
 	
 	public Channel() {
 
 	}
 
-	public Channel(Integer id_channel, String name_channel, Date channel_date, List<User> list_users) {
-		super();
-		this.id_channel = id_channel;
-		this.name_channel = name_channel;
-		this.channel_date = channel_date;
-		this.list_users = list_users;
+	public Integer getId() {
+		return id;
 	}
 
-	public Integer getId_channel() {
-		return id_channel;
-	}
-
-	public void setId_channel(Integer id_channel) {
-		this.id_channel = id_channel;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName_channel() {
@@ -59,11 +55,11 @@ public class Channel {
 		this.name_channel = name_channel;
 	}
 
-	public Date getChannel_date() {
+	public String getChannel_date() {
 		return channel_date;
 	}
 
-	public void setChannel_date(Date channel_date) {
+	public void setChannel_date(String channel_date) {
 		this.channel_date = channel_date;
 	}
 
@@ -75,5 +71,4 @@ public class Channel {
 		this.list_users = list_users;
 	}
 
-	
 }

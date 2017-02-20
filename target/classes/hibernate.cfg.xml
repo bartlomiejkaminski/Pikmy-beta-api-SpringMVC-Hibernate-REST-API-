@@ -6,19 +6,20 @@
 	<session-factory>
 		<!-- Database connection properties - Driver, URL, user, password -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pikmy_beta</property>
-		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.url">jdbc:mysql://pikmybeta.ctjwfqft9mda.eu-central-1.rds.amazonaws.com:3306/pikmybeta</property>
+		<property name="hibernate.connection.username">bartek</property>
+		<property name="hibernate.connection.password">bartek123</property>
 		
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		<!-- org.hibernate.HibernateException: No CurrentSessionContext configured! -->
 		<property name="hibernate.current_session_context_class">thread</property>
 		
 		<!-- Mapping with model class containing annotations -->
-		<mapping class="com.pikmy.hibernate.model.avatar"/>
-		<mapping class="com.pikmy.hibernate.model.channel"/>
-		<mapping class="com.pikmy.hibernate.model.pik"/>
-		<mapping class="com.pikmy.hibernate.model.user"/>
+		
+		<mapping class="com.pikmy.hibernate.model.Channel"/>
+		<mapping class="com.pikmy.hibernate.model.Pik"/>
+		<mapping class="com.pikmy.hibernate.model.User"/>
+		<mapping class="com.pikmy.hibernate.model.Avatar"/>
 	</session-factory>
 </hibernate-configuration>
